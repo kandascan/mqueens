@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body >
+    <div class="logo">
+        <a >M-Queens</a>
+      </div>
+
+      <div>
+  <div class="table_chess"  ></div>
+</div>
+  <script>
+    const electron = require('electron');
+    const { ipcRenderer } = electron;
+    const fs = require("fs");
+    const path = require("path");
+    var ar2 = [];
+    var data = fs.readFileSync(path.join(__dirname, "../result.txt"));
+    var a = data.toString().replace(/none/g, 0);
+    var b = a.replace(/\n/g, ',');
+    str = b.substring(0, b.length - 1);
+    console.log(str);
+    var array = JSON.parse("["+str+"]");
+    console.log(data);
+    console.log(array);
+    for (var k = 0; k < array.length; k++) {
+      const div = document.querySelector('.table_chess');
+      var table = document.createElement("table");
+      table.className = 'centrowanie';
+      const mydiv = document.createElement("div");
+      const mya = mydiv.appendChild(document.createElement('a'));
+      mya.innerHTML = array[k];
+      mydiv.className = "logo";
+      div.appendChild(mydiv);
+      for (var i = 0; i < array[0].length; i++) {
+        var tr = document.createElement('tr');
+        for (var j = 0; j < array[0].length; j++) {
+          var td = document.createElement('td');
+          if (i % 2 == j % 2) {
+            td.className = "white";
+            if (array[k][i] - 1 == j) {
+            td.className = "white queen";
+          }
+          } else {
+            td.className = "black";
+            if (array[k][i] - 1 == j) {
+            td.className = "black queen";
+          }
+          }
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+      }
+      div.appendChild(table);
+      div.appendChild(document.createElement('hr'));
+    }
+
+  </script>
+</body>
+
+</html>

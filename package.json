@@ -1,0 +1,16 @@
+{
+  "name": "m-queens",
+  "version": "1.0.0",
+  "description": "Interpretacja graficzna problemu m-queens",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Łukasz Szymszon, Bogusław Boczkowski, Mateusz Janicki",
+  "license": "MIT",
+  "dependencies": {
+    "JSON": "^1.0.0",
+    "electron": "^1.7.11",
+    "fs": "0.0.1-security"
+  }
+}
